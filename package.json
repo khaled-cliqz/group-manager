@@ -1,0 +1,24 @@
+{
+  "name": "group-manager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jspm": "^0.17.0-beta.44"
+  },
+  "jspm": {
+    "name": "group-manager",
+    "main": "group-manager.js",
+    "dependencies": {
+      "pouchdb": "github:pouchdb/pouchdb@^6.3.4"
+    },
+    "devDependencies": {
+      "plugin-babel": "npm:systemjs-plugin-babel@^0.0.25"
+    }
+  }
+}
