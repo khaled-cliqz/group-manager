@@ -28,8 +28,10 @@ export default class extends React.Component {
   handleSubmit(event) {
     const value = this.state.fullname.trim();
     if (this.validateName(value)) {
-      controller.addUser(value);
-      alert('User Added');
+      controller.addUser(value).then(_ => {
+        alert('User Added');
+        window.location.reload();
+      });
     } else {
       alert('Name shouldn\'t be empty or spaces');
     }

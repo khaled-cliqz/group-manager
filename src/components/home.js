@@ -14,30 +14,34 @@ export default class extends React.Component {
       users: null,
       groups: null,
     }
-    controller.getAllUsers().then(res => this.setState({users: res.docs}));
-    controller.getAllGroups().then(res => this.setState({groups: res.docs}));
+
+    controller.setOnDataChange(this.getData.bind(this));
+  }
+
+  getData() {
+    controller.getAllUsers().then(res => this.setState({users: res.rows}));
+    controller.getAllGroups().then(res => this.setState({groups: res.rows}));
   }
 
   displayUser(user) {
-    return <li key={user._id}> <User data={user} /> </li>
+    return <li key={user.id}> <User data={user.doc} /> </li>
   }
   
   displayGroup(group) {
-    return <li key={group._id}> <Group data={group} /> </li>
+    return <li key={group.id}> <Group data={group.doc} /> </li>
   }
 
   render() {
     const users = this.state.users;
     const groups = this.state.groups;
-    console.log('render', users, groups);
-    return <table style={{width: '100%'}}>
+    return <table style={{width: '100%', verticalAlign: 'top'}}>
       <tbody>
         <tr>
           <td>
-          <AddUserForm />
+            <AddUserForm />
           </td>
           <td>
-          <AddGroupForm />
+            <AddGroupForm />
           </td>
         </tr>
         <tr>

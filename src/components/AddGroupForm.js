@@ -28,8 +28,10 @@ export default class extends React.Component {
   handleSubmit(event) {
     const value = this.state.name.trim();
     if (this.validateName(value)) {
-      controller.addGroup(value);
-      alert('Group Added');
+      controller.addGroup(value).then(_ => {
+        alert('Group Added');
+        window.location.reload();
+      })
     } else {
       alert('Group Name shouldn\'t be empty or spaces');
     }
